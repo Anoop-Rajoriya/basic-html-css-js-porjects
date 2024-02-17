@@ -1,0 +1,73 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.main-container {
+    height: 100vh;
+    width: 100vw;
+}
+
+.img-container {
+    height: 8rem;
+    width: 8rem;
+    background-image: url("https://i.pinimg.com/474x/3d/5e/3e/3d5e3e5c5cb9691d75bdf64dc6415171.jpg");
+    border: 2px solid black;
+    background-size: cover;
+    background-position: top;
+    border-radius: 100%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+}
+
+.img-container::before,
+.img-container::after{
+    --scale: 0;
+    --tooltip-arrow-size: 15px;
+    --tooltip-background-color: rgba(0, 0, 0, 0.6);
+
+    position: absolute;
+    top: -.25rem;
+    left: 50%;
+
+    transform: translate(-50%, var(--translate-Y, 0)) scale(var(--scale));
+    transition: 100ms transform;
+    transform-origin: bottom center;
+}
+
+.img-container::before{
+
+    --translate-Y: calc(-100% - var(--tooltip-arrow-size));
+
+    content: attr(tooltip-data);
+    color: white;
+    text-transform: capitalize;
+    text-align: center;
+    padding: .5rem;
+    background-color: var(--tooltip-background-color);
+    width: max-content;
+    max-width: 8rem;
+    border-radius: .3em;
+}
+
+.img-container:hover::before,
+.img-container:hover::after{
+    --scale: 1;
+}
+
+.img-container::after{
+
+    transform: translate(-50%, calc(-1 * var(--tooltip-arrow-size))) scale(var(--scale));
+
+    content: "";
+    border: var(--tooltip-arrow-size) solid transparent;
+    border-top-color: var(--tooltip-background-color);
+
+    transform-origin: top center;
+}
