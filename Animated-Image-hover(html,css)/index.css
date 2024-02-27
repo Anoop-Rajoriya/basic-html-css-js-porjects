@@ -1,0 +1,84 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.imgs-container {
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.imgs {
+    position: relative;
+    overflow: hidden;
+}
+
+.imgs>img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: center;
+}
+
+.imgs>p {
+    position: absolute;
+    inset: 0;
+    font-size: 1.25rem;
+    padding: .5em;
+    background-color: rgba(255, 255, 255, .3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgs > img ,
+.imgs > p {
+    transition: 200ms ease-in-out;
+}
+
+.imgs:hover > img.blur {
+    filter: blur(5px);
+}
+.imgs:hover > img.gray {
+    filter: grayscale(1);
+}
+.imgs:hover > img.zoom {
+    scale: 1.1;
+}
+
+.imgs > p.fade {
+    opacity: 0;
+}
+.imgs:hover > p.fade {
+    opacity: 1;
+}
+
+.imgs > p.slid-top {
+    transform: translateY(-100%);
+}
+.imgs:hover > p.slid-top {
+    transform: translateY(0);
+}
+.imgs > p.slid-left {
+    transform: translateX(-100%);
+}
+.imgs:hover > p.slid-left {
+    transform: translateX(0);
+}
+.imgs > p.slid-bottom {
+    transform: translateY(100%);
+}
+.imgs:hover > p.slid-bottom {
+    transform: translateY(0);
+}
+.imgs > p.slid-right {
+    transform: translateX(100%);
+}
+.imgs:hover > p.slid-right {
+    transform: translateX(0);
+}

@@ -1,0 +1,98 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    --bar-height: 8px;
+    --bar-width: 60px;
+    --gap: 6px;
+    --menu-margin: 15px;
+    --background: white;
+    --forground: black;
+    --animation-timing: 200ms ease-in-out;
+    --hamburger-height: calc(var(--bar-height) * 3 + var(--gap) * 2);
+}
+
+.hamburger-menu {
+    --x-width: calc(var(--hamburger-height) * 1.41421356237);
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+    width: max-content;
+    position: absolute;
+    top: var(--menu-margin);
+    left: var(--menu-margin);
+    z-index: 2;
+    cursor: pointer;
+}
+
+.hamburger-menu:has(input:checked) {
+    --tem: var(--background);
+    --background: var(var(--forground));
+    --forground: var(--tem);
+}
+
+.hamburger-menu:has(input:focus-visible)::before,
+.hamburger-menu:has(input:focus-visible)::after,
+.hamburger-menu input:focus-visible {
+    border: 2px solid var(--background);
+    box-shadow: 0 0 0 2px var(--forground);
+}
+
+.hamburger-menu::before,
+.hamburger-menu::after,
+.hamburger-menu input {
+
+    content: "";
+
+    height: var(--bar-height);
+    width: var(--bar-width);
+    background-color: var(--forground);
+    border-radius: 9999px;
+
+    transform-origin: left center;
+
+    transition: opacity var(--animation-timing), width var(--animation-timing), transform var(--animation-timing);
+}
+
+.hamburger-menu:has(input:checked):before {
+    transform: rotate(45deg) translate(0, calc(var(--bar-height) / -2));
+    width: var(--x-width);
+}
+.hamburger-menu:has(input:checked):after {
+    transform: rotate(-45deg) translate(0, calc(var(--bar-height) / 2));;
+    width: var(--x-width);
+}
+.hamburger-menu input {
+    appearance: none;
+    margin: 0;
+    outline: none;
+}
+
+.hamburger-menu input:checked{
+    opacity: 0;
+    width: 0;
+}
+
+.sidbar {
+
+    transition: translate var(--animation-timing);
+    translate: -100%;
+    padding-top: calc(var(--hamburger-height) + 30px);
+    padding-left: 10px;
+    background-color: var(--forground);
+
+    width: 35vw;
+    height: 100vh;
+
+    color: var(--background);
+}
+
+.hamburger-menu:has(input:checked) + .sidbar{
+    translate: 0;
+}

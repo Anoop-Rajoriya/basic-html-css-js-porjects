@@ -1,0 +1,144 @@
+*,
+*::before,
+*::after {
+
+    box-sizing: border-box;
+}
+
+/* basic code  */
+.button-container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.buttons {
+    --border-color: hsl(0, 100%, 40%);
+    --border-size: 2.5px;
+    --background-color: hsl(0, 0%, 89%);
+    background-color: var(--background-color);
+    padding: 1rem 2rem;
+    text-transform: capitalize;
+    outline: none;
+    border: none;
+    position: relative;
+}
+
+/* main code  */
+/* button one code  */
+.button01::before{
+    content: "";
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border: var(--border-size) solid var(--border-color);
+    z-index: -1;
+
+    transition: 80ms all ease-in-out
+}
+
+.button01:hover::before,
+.button01:focus::before {
+
+    top: calc(var(--border-size) * -2);
+    bottom: calc(var(--border-size) * -2);
+    left: calc(var(--border-size) * -2);
+    right: calc(var(--border-size) * -2);
+}
+
+/* button two  */
+.button02 {
+    z-index: 1;
+    transform: color 300ms ease-in-out;
+}
+.button02:before {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+    background-color: var(--border-color);
+
+    transform: scaleX(0);
+    transition: transform 300ms ease-in-out;
+    transform-origin: left;
+}
+
+.button02:hover::before,
+.button02:focus::before {
+    transform: scaleX(1);
+    color: white;
+}
+
+.button02:hover,
+.button02:hover {
+    color: white;
+}
+
+/* button third */
+
+.button03 {
+    z-index: 1;
+    background-color: var(--border-color);
+    overflow: hidden;
+    transition: color 400ms ease-in-out;
+}
+.button03:before {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: 50%;
+    z-index: -1;
+    background-color: var(--background-color);
+    transform: scale(1.5);
+    transition: transform 400ms ease-in-out
+}
+
+.button03:hover::before,
+.button03:focus::before {
+transform: scale(0);
+}
+
+.button03:hover,
+.button03:focus {
+    color: white;
+}
+
+/* button four  */
+
+.button04{
+    z-index: 1;
+}
+
+.button04:before{
+    content: '';
+    position: absolute;
+
+    left:0;
+    top:0;
+    right:0;
+    bottom:0;
+    border-bottom: 4px solid var(--border-color);
+    z-index: -1;
+    transform: scaleX(0);
+    transition: transform 200ms ease-in-out;
+}
+
+.button04:hover::before,
+.button04:focus::before {
+    transform: scaleX(1);
+}

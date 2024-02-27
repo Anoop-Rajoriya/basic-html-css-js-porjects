@@ -1,0 +1,132 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100vw;
+}
+
+.spinner-container01 {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-transform: uppercase;
+    overflow: hidden;
+
+    animation: fade 1.5s ease infinite alternate;
+}
+.rings01 {
+    --time: 1.2s;
+    --timing-fun: ease-in-out;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    border: 15px solid transparent;
+    border-radius: 50%;
+    mix-blend-mode: overlay;
+
+    animation: rotate var(--time) var(--timing-fun) infinite;
+}
+.new-version .rings01{
+
+    border-radius: 0px;
+}
+
+.ring01 {
+    border-top-color: lightcoral;
+}
+.ring02 {
+    --time: 1.8s;
+    --timing-fun: ease-in;
+    border-left-color: lightblue
+}
+.ring03 {
+    --time: 1.6s;
+    --time-fun: ease-out;
+    border-bottom-color: lightgreen
+}
+.ring04 {
+    --time: 1.4s;
+    --timing-fun: linear;
+    border-right-color: lightsalmon
+}
+
+.spinner-container02 {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-transform: uppercase;
+    overflow: hidden;
+
+    animation: fade 1.5s ease infinite alternate;
+}
+
+.spinner-container02:before ,
+.spinner-container02:after {
+    content: "";
+    --time: 1.2s;
+    --timing-fun: ease-in-out;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    border: 15px solid transparent;
+    border-radius: 50%;
+    mix-blend-mode: overlay;
+
+    animation: rotate var(--time) var(--timing-fun) infinite;
+}
+
+.spinner-container02:after{
+    border-top-color: lightcoral;
+    --time: 1.6s;
+    --time-fun: ease-out;
+    border-bottom-color: lightgreen
+}
+.spinner-container02:before{
+    --time: 1.8s;
+    --timing-fun: ease-in;
+    border-left-color: lightblue;
+
+    --time: 1.4s;
+    --timing-fun: linear;
+    border-right-color: lightsalmon
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fade {
+    0%{
+        color: rgba(0, 0, 0, 1);
+    }
+    50% {
+        color: rgba(0, 0, 0, .5);
+    }
+    100% {
+        color: rgba(0, 0, 0, .1);
+    }
+}
